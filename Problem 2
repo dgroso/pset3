@@ -1,3 +1,9 @@
+#!/usr/bin/python
+
+#### Problem 2 #### 
+### Collab with Heba El-Ahmad ###
+
+
 ####open and read the file using handle
 data = 'wl.csv' # rename filename accordingly
 wlhandle = open(data, 'r')
