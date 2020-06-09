@@ -1,0 +1,28 @@
+####open and read the file using handle
+data = 'wl.csv' # rename filename accordingly
+wlhandle = open(data, 'r')
+
+####define function
+def highest_num(wlhandle):
+    
+    ####import pandas 
+    import pandas as pd
+    
+    ####create dataframe with the date and water levels 
+    df=pd.read_csv(wlhandle, usecols=[0,1])
+    
+    ####store the maximum water level in a variable 
+    max_num = df.max()[1]
+    
+    ####iterate through each row and store date into variable d, water level into variable w
+    for i, row in df.iterrows():
+        d = row[0]
+        w = row[1]
+        ####format the date and max water level as a string, store in variable statement
+        statement = "Date: {0}     Max Water Level: {1}".format(d, w)
+        ####if the water level is the max value, return date and water level as formatted in statement 
+        if w == max_num:
+            return statement
+
+####print the results of the function 
+print(highest_num(wlhandle))
