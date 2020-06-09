@@ -1,0 +1,36 @@
+#!/usr/bin/python
+
+##### Problem 1 ######
+
+### Collaboration with Heba El-Ahmad ###
+
+
+# open the data file
+wlhandle = open('wl.csv')
+
+# create function highest_num
+def highest_num(wlhandle):
+
+    # creates an empty dictionary
+    date_water_dict = {}
+
+    # iterate through every line
+    for line in wlhandle:
+        # split lines
+        entire_line = line.split(",")
+        # create new variables to get the date[0] and water level[1] values
+        date = entire_line[0]
+        water_level = entire_line[1]
+        # store date as key and water level as value inside the dictionary
+        date_water_dict[date] = water_level
+# define max_num as the max value from date_water_dict values
+
+    max_num = max(date_water_dict.values())
+    # iterate through each date/water level in date_water_dict dictionary
+    for value in date_water_dict.items():
+        # if the water level [1] is the max then return the date/water level values
+        if value[1] == max_num:
+            return value
+
+# print the values of the function
+print("The Highest Water Level is:", highest_num(wlhandle))
