@@ -4,32 +4,32 @@
 ### Collab with Heba El-Ahmad ###
 
 
-####open and read the file using handle
-data = 'PS3Data.csv'
+### open and read the file using handle
+data = 'wl.csv'
 wlhandle = open(data, 'r')
 
-####define function
+### define function
 def highest_change(wlhandle):
     
-    ####import pandas 
+    ### import pandas 
     import pandas as pd
     
-    ####create dataframe with the date and water levels 
+    ### create dataframe with the date and water levels 
     df=pd.read_csv(wlhandle, usecols=[0,1])
-    ####Add change column for the difference in water level values 
+    ### Add change column for the difference in water level values 
     df['Change'] = df[' Water Level'].diff()
     
-    ####find the max change in water levels 
+    ### find the max change in water levels 
     max_num = df.max()[2]
-#iterate through each row, store date into variable d, store change into variable c 
+    ### iterate through each row, store date into variable d, store change into variable c 
     for i, row in df.iterrows():
         d = row[0]
         c = row[2]
-        ####format the date and change as a string, store in variable statement
+        ### format the date and change as a string, store in variable statement
         statement = "Date: {0}     Max Change in Water Level: {1}".format(d, c)
-        ####if the change is the max value, return date and change as formatted in statement 
+        ### if the change is the max value, return date and change as formatted in statement 
         if c == max_num:
             return statement
 
-####print the results of the function 
+### print the results of the function 
 print(highest_change(wlhandle))
